@@ -1,64 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About this project
 
-## About Laravel
+Here is a link shortening service.
+Any visitor can register a link, which will be shortened and displayed at the bottom of the table below the link registration form.
+On the input form, there is validation for the validity of the url of the link (it is validated from the front side by the form itself, as well as from the back side).
+You can follow a shortened link both from the table directly, and by copying the link address in the table and pasting it into the address bar of your browser.
+Queues in Laravel are used both for registering links and for counting redirects. For high-load projects, the use of queues, in my opinion, is the most optimal solution.
+According to the terms of reference, I did not quite understand what it means, Track
+redirects through the application, so it was decided to simply count the number of clicks / clicks on the shortened link. The number will be counted using the queue, therefore, all transitions will be counted in the order of the queue.
+Initially, queues are processed synchronously. For asynchronous operation of queues, it is necessary to configure the server where the project will be cloned.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+When creating this project, the Laravel framework was used.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Technologies used in the project:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- back part - writing changes to the database through laravel queues,
+- front-end - vue js components. Sending to the back, receiving data from the back - axios using vuex.
 
-## Learning Laravel
+## From the author
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Perhaps the work is not perfect, and there are flaws.
+I would be glad to any criticism, because I understand that in this direction I still have a lot to learn and master.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instructions for checking this project:
+To check the functionality of the project, you need to clone the project:
+```
+git clone https://github.com/anutkaborisenko87/test_webcost_full_stack_position.git <project-directory>
+```
 
-## Laravel Sponsors
+and enter the following commands in sequence
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+cd <project-directory>
 
-### Premium Partners
+composer install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+cp .env.example .env
 
-## Contributing
+php artisan key:generate
+```
+after the database for this project is created in MySQL and its settings are added to the .env file
+```
+php artisan migrate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+npm install
 
-## Code of Conduct
+npm run dev
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
 
-## Security Vulnerabilities
+To configure the operation of laravel queues in the console, you must enter the command
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+php artisan queue:work
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Contacts
+
+- **Linkedin: [Anna Borisenko](https://www.linkedin.com/in/anna-borisenko-695837213/)**
+- **Telegram: [Anna Borisenko](https://t.me/AnutkaBorisenko)**
+- **email: [anutkaborisenko87@gmail.com](anutkaborisenko87@gmail.com)**
