@@ -7,11 +7,29 @@ function createNewLink(params) {
         };
     }).catch(err=> {
         return {
-            newLink: err.response.data.message,
+            newLink: err.response.data,
+        };
+    });
+}
+
+function getLinksList() {
+    return axios.get('api/link_list').then((response) => {
+        return {
+            link_list: response.data.data
+        };
+    });
+}
+
+function countRedirectLink(params) {
+    return axios.get('api/link_redirected/'+ params).then((response) => {
+        return {
+            redirectedLink: response.data
         };
     });
 }
 
 export default {
-    createNewLink
+    createNewLink,
+    getLinksList,
+    countRedirectLink
 }
