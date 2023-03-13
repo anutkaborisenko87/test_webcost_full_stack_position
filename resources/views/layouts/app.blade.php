@@ -26,6 +26,11 @@
     </div>
 </nav>
 <div id="app">
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <main>
         @yield('content')

@@ -27,4 +27,14 @@ class LinkController extends Controller
         CountRedirectUrlJob::dispatch($link);
         return response()->json(['message'=>'Link redirected successfully']);
     }
+
+    public function webredirectLink($code)
+    {
+        $link = Link::where('code', $code)->first();
+        if(is_null($link)) {
+            return redirect()->route('home')->with('error', 'Link not registered');
+        }
+        CountRedirectUrlJob::dispatch($link);
+        return redirect($link->link);
+    }
 }
